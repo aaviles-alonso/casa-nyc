@@ -12,12 +12,15 @@ import Legal from "./pages/Legal/Legal";
 import Education from "./pages/Education/Education";
 // import Organizations page
 import Organizations from "./pages/Organizations/Organizations";
+// import Header and Footer
+import Header from './components/Header/Header';
 
 
 function App() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/resources" element={<Resources />} />
@@ -25,7 +28,7 @@ function App() {
         <Route path="/resources/legal" element={<Legal />} />
         <Route path="/resources/education" element={<Education />} />
         <Route path="/organizations" element={<Organizations />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
