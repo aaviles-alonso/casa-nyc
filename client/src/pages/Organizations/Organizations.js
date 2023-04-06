@@ -1,0 +1,2 @@
+// stylesheet
+import "./Organizations.scss";

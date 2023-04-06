@@ -1,0 +1,26 @@
+// Responsive Dimensions
+$mobile: 393px;
+$tablet: 768px;
+$desktop: 1280px;
+
+// Font Family
+@font-face {
+    font-family: 'Urbanist';
+    src: url(../../assets/font/urbanist/Urbanist-ExtraLight.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url(../../assets/font/urbanist/Urbanist-Light.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url(../../assets/font/urbanist/Urbanist-Medium.ttf);
+    font-weight: 500;
+}
+
+// Colors
+$Off-White: #FAF9F6;

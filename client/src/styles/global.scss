@@ -1,0 +1,32 @@
+@use "./partials/variables.scss" as *;
+
+@mixin tablet {
+    @media(min-width:$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media(min-width:$desktop) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media(min-width:$mobile) {
+        @content;
+    }
+}
+
+li {
+    list-style-type: none;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Urbanist', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}

@@ -1,0 +1,2 @@
+// stylesheet
+import "./Resources.scss";

@@ -1,0 +1,2 @@
+// stylesheet
+import "./NotFound.scss";
