@@ -18,17 +18,31 @@ const validateOrganization = (req, res, next) => {
                 "Please make sure to provide all the information in the fields in a request"
             );
     }
-    knex("organization")
-        .select("id")
-        .then((data) => {
-            const dataArr = data.map((item) => item.id);
-            // check if id is valid
-            if (!dataArr.includes(req.body.id)) {
-                return res.status(400).send("Organization does not exist");
-            } else {
-                next();
-            }
 
-        });
+    //check for number format
+    if (
+        !req.body.contact_phone.length == 13
+
+    ) {
+        return res
+            .status(400)
+            .send("Please make sure to provide correct phone number and email.");
+    }
+    next();
 };
+
+
+knex("organization")
+    .select("id")
+    .then((data) => {
+        const dataArr = data.map((item) => item.id);
+        // check if id is valid
+        if (!dataArr.includes(req.body.id)) {
+            return res.status(400).send("Organization does not exist");
+        } else {
+            next();
+        }
+
+    });
+
 module.exports = validateOrganization;
