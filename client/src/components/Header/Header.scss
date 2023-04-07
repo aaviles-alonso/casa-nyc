@@ -19,6 +19,7 @@
     }
 
     &__nav--menu {
+        display: none;
 
         @include tablet {
             display: flex;
