@@ -1,16 +1,13 @@
 const knex = require("knex")(require("../knexfile"));
 
-const validateOrganization = (req, res, next) => {
+const validateHealthcare = (req, res, next) => {
     //check for empty inputs
     if (
         !req.body.id ||
         !req.body.name ||
-        !req.body.languages ||
         !req.body.address ||
         !req.body.phone ||
-        !req.body.zipcode ||
-        !req.body.description ||
-        !req.body.link
+        !req.body.zipcode
     ) {
         return res
             .status(400)
@@ -32,17 +29,17 @@ const validateOrganization = (req, res, next) => {
 };
 
 
-knex("organization")
+knex("healthcare")
     .select("id")
     .then((data) => {
         const dataArr = data.map((item) => item.id);
         // check if id is valid
         if (!dataArr.includes(req.body.id)) {
-            return res.status(400).send("Organization does not exist");
+            return res.status(400).send("Healthcare office does not exist");
         } else {
             next();
         }
 
     });
 
-module.exports = validateOrganization;
+module.exports = validateHealthcare;
