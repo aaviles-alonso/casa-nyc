@@ -1,0 +1,74 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+
+.header {
+    background-color: $Off-White;
+    border-bottom: 1px solid #E2E8F0;
+    width: 100%;
+    box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+
+
+    &__nav--bar {
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+    }
+
+    &__nav--menu {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+
+    &__nav--link {
+        margin: 2.5rem 0;
+
+        @include tablet {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #475569;
+            margin-left: 5rem;
+
+            &:hover {
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+            &-active {
+                text-decoration: underline;
+                font-weight: bold;
+
+            }
+        }
+
+        @include desktop {
+            font-size: 2.0rem;
+        }
+    }
+
+    &__logo {
+        width: 45%;
+        padding-top: 15px;
+        margin-left: 100px;
+
+        @include tablet {
+            width: 40%;
+            padding-top: 8px;
+            margin-left: 30px;
+        }
+
+        @include desktop {
+            width: 30%;
+        }
+    }
+
+}

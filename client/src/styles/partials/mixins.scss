@@ -1,0 +1,27 @@
+@use "./variables" as *;
+
+@mixin tablet {
+    @media(min-width:$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media(min-width:$desktop) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media(min-width:$mobile) {
+        @content;
+    }
+}
+
+@mixin navLinks ($bg-color, $color ) {
+
+    color: $color;
+    background-color: $bg-color;
+    font-weight: 400;
+    display: flex;
+}
