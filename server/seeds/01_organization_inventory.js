@@ -692,7 +692,7 @@ exports.seed = async function (knex) {
       address: "380 - 384 Van Duzer St. 1st Floor, Staten Island, NY 10304",
       phone: "(718) 665 - 2486 ",
       zipcode: "10304",
-      description: "http://www.sautiyetu.us/",
+      description: 'Provides services for poor and low-income African immigrant women and families. Includes social services support, awareness workshops and information on female genital cutting, services in domestic & sexual violence, programs in supportive counseling, and an immigrant youth program.',
       link: "http://www.sautiyetu.us/",
     },
 
