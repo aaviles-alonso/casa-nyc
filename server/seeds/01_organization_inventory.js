@@ -4,8 +4,8 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex('oranizations').del()
-  await knex('oranizations').insert([
+  await knex('oranization').del()
+  await knex('oranization').insert([
     {
       id: '56983724',
       name: '100 Hispanic Women National, Inc.',
