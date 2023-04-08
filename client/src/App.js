@@ -5,8 +5,8 @@ import "./styles/global.scss";
 
 // import other pages
 import Home from "./pages/Home/Home";
-import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
+import NotFound from "./pages/NotFound/NotFound";
 // import resource pages
 import Resources from "./pages/Resources/Resources";
 import Healthcare from "./pages/Healthcare/Healthcare";

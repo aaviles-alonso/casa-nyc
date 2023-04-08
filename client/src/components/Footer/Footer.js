@@ -15,7 +15,7 @@ function Footer() {
         <>
             <footer className="footer">
                 <div className="footer__main">
-                    <h2 className="footer__title">FOLLOW US</h2>
+                    <h3 className="footer__title">FOLLOW US</h3>
                 </div>
                 <div className="footer__social">
                     <a className="footer__social--link" href="https://instagram.com">

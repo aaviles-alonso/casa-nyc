@@ -15,7 +15,7 @@
         font-size: 1.6rem;
         font-weight: 600;
         line-height: 32px;
-        margin-left: 20px;
+        margin-left: 40px;
         padding-top: 20px;
 
         @include desktop {
@@ -26,6 +26,8 @@
     }
 
     &__social {
+        padding-left: 20px;
+
         @include tablet {
             float: right;
             padding-right: 40px;
