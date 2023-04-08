@@ -1,6 +1,8 @@
 import './App.scss';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./styles/global.scss";
+
 // import other pages
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
@@ -14,6 +16,7 @@ import Education from "./pages/Education/Education";
 import Organizations from "./pages/Organizations/Organizations";
 // import Header and Footer
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -31,6 +34,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
