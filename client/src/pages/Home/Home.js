@@ -22,6 +22,9 @@ export default function Home() {
 
             <div className="about">
                 <h1 className="about__title">ABOUT US</h1>
+            </div>
+
+            <div className="about__paragraph">
                 <p className="about__text">
                     Casa-nyc has gathered all of the resources we can find to help immigrant New Yorkers.
                     At Casa-nyc, we're all about inclusivity and teamwork! That's why we welcome contributions
@@ -34,6 +37,8 @@ export default function Home() {
 
             <div className="about__mission">
                 <h2 className="about__title">OUR MISSION</h2>
+            </div>
+            < div className="about__mission--paragraph">
                 <p className="about__text">
                     Casa-nyc seeks to facilitate access to vital resources for immigrants who have recently
                     settled in New York City allowing easier navigation and access to resources with greater

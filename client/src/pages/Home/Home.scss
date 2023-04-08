@@ -19,6 +19,34 @@
 }
 
 .about {
+    @include desktop {
+        position: absolute;
+        z-index: 1;
+        background-color: $Main;
+        bottom: 325px;
+        left: 40px;
+        width: 25vw;
+        height: 10vh;
+        border-radius: 3px;
+        box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+    }
+
+    &__mission {
+        @include desktop {
+            position: absolute;
+            z-index: 1;
+            background-color: $Main;
+            bottom: 125px;
+            left: 40px;
+            width: 25vw;
+            height: 10vh;
+            border-radius: 3px;
+            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+        }
+    }
+
     &__title {
         color: $Casa-Blue;
         font-weight: 600;
@@ -26,6 +54,11 @@
         padding-left: 16px;
         font-size: 1.5rem;
         line-height: 32px;
+
+        @include desktop {
+            font-size: 3.5rem;
+            margin-left: 20px;
+        }
     }
 
     &__text {
@@ -36,7 +69,7 @@
         margin-top: 20px;
 
         @include tablet {
-            font-size: 20px;
+            font-size: 2rem;
             line-height: 30px;
             width: 75%;
             text-align: left;
@@ -44,14 +77,14 @@
         }
 
         @include desktop {
-            margin-left: 230px;
+            margin-left: 400px;
             width: 50%;
         }
     }
 }
 
 .gallery {
-    background-color: #EAFAF1;
+    background-color: $Main;
     padding-top: 10px;
 
     @include tablet {
@@ -67,6 +100,11 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+        }
+
+        @include desktop {
+            padding-top: 20px;
+            padding-bottom: 50px;
         }
     }
 
