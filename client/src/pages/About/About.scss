@@ -16,27 +16,6 @@
 
     }
 
-    &__mission {
-        @include desktop {
-            position: absolute;
-            z-index: 1;
-            background-color: $Main;
-            bottom: 525px;
-            left: 40px;
-            width: 25vw;
-            height: 10vh;
-            border-radius: 3px;
-            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-
-        }
-    }
-
-    &__mission--image {
-        width: 80%;
-        height: 40%;
-        margin-left: 40px;
-    }
-
     &__title {
         color: $Casa-Blue;
         font-weight: 600;
@@ -44,9 +23,28 @@
         font-size: 2.5rem;
         line-height: 32px;
 
+        @include tablet {
+            padding-top: 30px;
+        }
+
         @include desktop {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             margin-left: 20px;
+        }
+    }
+
+    &__mission--image {
+        width: 80%;
+        height: 40%;
+        margin-left: 40px;
+
+        @include tablet {
+            margin-left: 75px;
+        }
+
+        @include desktop {
+            width: 60%;
+            margin-left: 270px;
         }
     }
 
@@ -67,8 +65,9 @@
         }
 
         @include desktop {
-            margin-left: 400px;
-            width: 50%;
+            margin-left: 132px;
+            width: 75%;
+            font-size: 2.5rem;
         }
     }
 
@@ -88,17 +87,47 @@
         padding: 10px;
         box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 
+        @include tablet {
+            font-size: 2.5rem;
+            width: 50%;
+            margin-left: 22px;
+            padding: 30px;
+        }
+
+        @include desktop {
+            font-size: 2.8rem;
+            width: 44%;
+            padding: 36px;
+            margin-left: 50px;
+        }
+
     }
 
     &__paragraph--image {
         padding-top: 70px;
         width: 75%;
+
+        @include tablet {
+            padding-top: 75px;
+        }
     }
 
     &__paragraph--community {
         width: 95%;
         height: 35vh;
         padding-left: 108px;
+
+        @include tablet {
+            width: 90%;
+            height: 38vh;
+            padding-left: 210px;
+        }
+
+        @include desktop {
+            width: 84%;
+            height: 40vh;
+            padding-left: 320px;
+        }
     }
 
     &__mission--two {
@@ -106,5 +135,43 @@
         height: 40%;
         margin-left: 20px;
         margin-top: 20px;
+
+        @include desktop {
+            width: 65%;
+            margin-left: 40px;
+            margin-top: 40px;
+        }
+    }
+
+    &__text--second {
+        color: $Casa-Blue;
+        font-weight: 300;
+        font-size: 1.8rem;
+        width: 80%;
+        padding-left: 40px;
+        margin-top: 20px;
+        text-align: center;
+
+        @include tablet {
+            font-size: 2.5rem;
+            line-height: 25px;
+            font-weight: 400;
+            width: 64%;
+            text-align: left;
+            margin-left: 205px;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+
+        }
+
+        @include desktop {
+            font-size: 2.8rem;
+            line-height: 32px;
+            margin-left: 475px;
+            width: 45%;
+            padding: 50px;
+        }
+
     }
 }

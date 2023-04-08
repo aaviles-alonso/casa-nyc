@@ -41,13 +41,9 @@ export default function About() {
                     <div className="">
                         <img src={mission} alt="people dancing" className="about__mission--two"></img>
                     </div>
-                    <p className="about__text">
-                        Our goal is to be the go-to place for immigrants to find everything
-                        they need to succeed and feel at home.
-                        We welcome contributions
-                        from everyone in the community to make sure we've got the latest and most accurate information
-                        available. We're all about collaboration and sharing knowledge,
-                        so that everyone can benefit and thrive together. Come and join the Casa-nyc family!
+                    <p className="about__text--second">
+                        We welcome contributions from everyone in the community to make sure we've got the latest and most accurate information
+                        available. Come and join the Casa-nyc family!
                     </p>
                 </div>
             </div>
