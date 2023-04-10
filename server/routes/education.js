@@ -6,9 +6,10 @@ const educationController = require("../controllers/educationController");
 
 router.get("/resources/education", educationController.getAll);
 
-router.post("/resources/education", validateEducation, educationController);
+router.put("/resources/education", validateEducation, educationController.put);
 
-router.put("/resources/education", validateEducation, educationController);
+router.post("/resources/education", validateEducation, educationController.post);
 
 router.delete("/resources/education", educationController.del)
 
+module.exports = router;

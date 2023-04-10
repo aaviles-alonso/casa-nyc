@@ -18,7 +18,7 @@ const validateHealthcare = (req, res, next) => {
 
     //check for number format
     if (
-        !req.body.contact_phone.length == 14
+        !req.body.phone.length == 14
 
     ) {
         return res

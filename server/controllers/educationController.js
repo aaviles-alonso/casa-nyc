@@ -74,7 +74,7 @@ exports.post = (req, res) => {
         .insert(newEducation)
         .then((data) => {
             //mysql does not send res back about post status
-            res.status(201).json(newOrganization);
+            res.status(201).json(newEducation);
         })
         .catch((err) => res.status(400).send(`Error creating Organization: ${err}`));
 };
