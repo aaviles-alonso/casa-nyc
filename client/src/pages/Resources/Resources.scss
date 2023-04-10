@@ -1,0 +1,157 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.resource {
+    &__hero {
+        background-color: black;
+        display: flex;
+        height: 30%;
+    }
+
+    &__hero--title-sub {
+        color: white;
+        font-size: 1.2rem;
+        padding: 10px;
+        margin-top: 50px;
+        margin-left: 50px;
+        width: 98%;
+
+        @include tablet {
+            font-size: 2.5rem;
+            margin-left: 66px;
+            margin-top: 70px;
+        }
+
+        @include desktop {
+            font-size: 3.5rem;
+            margin-top: 135px;
+            margin-left: 150px;
+        }
+    }
+
+    &__hero--image-sub {
+        width: 50%;
+        margin-top: 5px;
+        padding-bottom: 10px;
+        margin-left: 128px;
+        height: 92%;
+
+        @include tablet {
+            margin-top: 10px;
+            margin-left: 275px;
+            height: 92%;
+        }
+
+        @include desktop {
+            margin-top: 15px;
+            margin-left: 450px;
+        }
+    }
+
+    &__section {
+        width: 100%;
+        background-color: #FAFAEB;
+        padding-top: 30px;
+        height: 112vh;
+
+        @include tablet {
+            padding-top: 55px;
+            height: 115vh;
+        }
+
+        @include desktop {
+            // display: flex;
+            padding-top: 10px;
+            height: 95vh;
+        }
+    }
+
+    &__section--text {
+        margin-left: 28px;
+        line-height: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+
+        @include tablet {
+            margin-right: 10px;
+            font-size: 2rem;
+            line-height: 25px;
+            margin-bottom: 30px;
+        }
+
+        @include desktop {
+            line-height: 35px;
+            font-size: 3rem;
+            width: 80%;
+            padding-left: 80px;
+        }
+    }
+
+    &__container {
+        border: 1px solid #FAFAEB;
+        width: 50%;
+        background-color: white;
+        min-height: 30px;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 110px;
+        margin-bottom: 20px;
+        box-shadow: 5px 5px 8px 2px $Casa-Blue;
+
+        @include tablet {
+            margin-left: 180px;
+            margin-bottom: 35px;
+        }
+
+        @include desktop {
+            margin-left: 350px;
+            margin-right: 50px;
+            width: 40%;
+        }
+    }
+
+    &__container--card {
+        text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        margin-right: 10px;
+        padding: 15px;
+
+        @include desktop {
+            padding: 25px;
+        }
+    }
+
+    &__container--icon {
+        width: 30%;
+
+    }
+
+    &__container--icon2 {
+        width: 20%;
+    }
+
+    &__container--title {
+        color: $Casa-Blue;
+        font-weight: 800;
+
+        @include tablet {
+            font-size: 1.8rem;
+        }
+    }
+
+
+    &__container--text {
+        color: $Casa-Blue;
+
+        @include tablet {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__section {
+        // background-color: $Main;
+        // height: 500px;
+    }
+}

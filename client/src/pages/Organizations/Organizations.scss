@@ -16,3 +16,16 @@
         }
     }
 }
+
+.organization {
+    &__about {}
+
+    &__about--text {
+        font-weight: 300;
+        font-size: 1.8rem;
+        width: 80%;
+        padding-left: 40px;
+        margin-top: 20px;
+        text-align: center;
+    }
+}

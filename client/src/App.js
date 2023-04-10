@@ -1,6 +1,7 @@
 import './App.scss';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 import "./styles/global.scss";
 
 // import other pages
@@ -20,6 +21,7 @@ import Footer from './components/Footer/Footer';
 
 
 function App() {
+  const [Organization, setOrganization] = useState([]);
 
   return (
     <BrowserRouter>

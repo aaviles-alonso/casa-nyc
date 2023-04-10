@@ -2,10 +2,10 @@
 import hero from "../../assets/images/legal-cover.jpeg";
 // import components
 import Search from "../../components/Search/Search";
-
-
 // stylesheet
 import "./Legal.scss";
+
+
 export default function Legal() {
     return (
         <>

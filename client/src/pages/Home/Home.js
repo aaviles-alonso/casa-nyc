@@ -19,7 +19,12 @@ export default function Home() {
             <div className="hero">
                 <img src={hero} alt="hero" className="hero__image" />
             </div>
-
+            <div className="home">
+                <p className="home__text">
+                    Casa-nyc is a community-centered non-profit organization that provides
+                    direct immigration legal representation and community education to
+                    New York City’s undocumented immigrant communities.</p>
+            </div>
             <section className="gallery">
                 <div className="gallery__photos">
 
