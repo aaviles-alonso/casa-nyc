@@ -10,6 +10,7 @@ exports.up = function (knex) {
         table.string("address").notNullable();
         table.string("phone").notNullable();
         table.string("zipcode").notNullable();
+        table.string("link").notNullable();
     });
 };
 
