@@ -31,16 +31,16 @@ const validateEducation = (req, res, next) => {
     next();
 };
 
-knex("education")
-    .select("id")
-    .then((data) => {
-        const dataArr = data.map((item) => item.id);
-        // check if id is valid
-        if (!dataArr.includes(req.body.id)) {
-            return res.status(400).send("Education resource does not exist");
-        } else {
-            next();
-        }
+// knex("education")
+//     .select("id")
+//     .then((data) => {
+//         const dataArr = data.map((item) => item.id);
+//         // check if id is valid
+//         if (!dataArr.includes(req.body.id)) {
+//             return res.status(400).send("Education resource does not exist");
+//         } else {
+//             next();
+//         }
 
-    });
+//     });
 module.exports = validateEducation;

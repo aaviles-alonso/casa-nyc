@@ -29,17 +29,17 @@ const validateHealthcare = (req, res, next) => {
 };
 
 
-knex("healthcare")
-    .select("id")
-    .then((data) => {
-        const dataArr = data.map((item) => item.id);
-        // check if id is valid
-        if (!dataArr.includes(req.body.id)) {
-            return res.status(400).send("Healthcare office does not exist");
-        } else {
-            next();
-        }
+// knex("healthcare")
+//     .select("id")
+//     .then((data) => {
+//         const dataArr = data.map((item) => item.id);
+//         // check if id is valid
+//         if (!dataArr.includes(req.body.id)) {
+//             return res.status(400).send("Healthcare office does not exist");
+//         } else {
+//             next();
+//         }
 
-    });
+//     });
 
 module.exports = validateHealthcare;

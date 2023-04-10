@@ -4,7 +4,7 @@ const { randomUUID } = require("crypto");
 exports.getAll = (req, res) => {
     knex("healthcare")
         .select(
-            "id",
+            "borough",
             "name",
             "address",
             "phone",
@@ -19,7 +19,7 @@ exports.getAll = (req, res) => {
 exports.getSingle = (req, res) => {
     knex("healthcare")
         .select(
-            "id",
+            "borough",
             "name",
             "address",
             "phone",
