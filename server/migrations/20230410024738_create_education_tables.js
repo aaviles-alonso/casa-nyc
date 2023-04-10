@@ -10,6 +10,10 @@ exports.up = function (knex) {
         table.string("address").notNullable();
         table.string("phone").notNullable();
         table.string("zipcode").notNullable();
+        table.string("description").notNullable();
+        table.string("class_type").notNullable();
+        table.string("link").notNullable();
+
     });
 };
 
@@ -18,5 +22,6 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-    return knex.schema.dropTable("legal");
+    return knex.schema.dropTable('education');
+
 };
