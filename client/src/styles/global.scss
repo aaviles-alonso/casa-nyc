@@ -37,9 +37,14 @@ h1 {
     text-align: center;
     color: $Casa-Blue;
 
-    @include desktop {
+    @include tablet {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+
+    @include desktop {
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
 }
 

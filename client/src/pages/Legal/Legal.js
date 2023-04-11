@@ -75,10 +75,30 @@ export default function Legal() {
         <>
             <div className="legal">
                 <h1>Legal Service Providers Serving Immigrants in New York City</h1>
+
                 <div className="hero">
                     <img src={hero} alt="legal hero" className="hero__image" />
                 </div>
+
+                <div className="organization__about">
+                    <p className="organization__about--text">
+                        Due to the pandemic, many Latino immigrants, undocumented immigrants, and people with DACA need legal advice on immigration
+                        or work issues. Here we put together some free or low-cost resources that provide guidance or free legal help for immigrants
+                        in New York State. Please contact them and ask about your personal inquiry.</p>
+                </div>
+
                 <Search />
+
+                <div className="organization__container">
+                    <div class="organization__container--heading">
+                        <h3>Legal Service Provider</h3>
+                        <p className="organization__container--info">Name</p>
+                        <p className="organization__container--info">Address</p>
+                        <p className="organization__container--info">Phone Number</p>
+                        <p className="organization__container--info">Link</p>
+                    </div>
+                </div>
+
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
                         <label className="org__form--label" htmlFor="name">Law Service Provider</label>

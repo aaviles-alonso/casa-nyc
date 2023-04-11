@@ -100,9 +100,17 @@ export default function Organizations() {
                 </div>
 
                 <div className="organization__container">
-                    <h3>Organization Title</h3>
-
+                    <div class="organization__container--heading">
+                        <h3>Organization Name</h3>
+                        <p className="organization__container--info">Link</p>
+                        <p className="organization__container--info">Languages</p>
+                        <p className="organization__container--info">Address </p>
+                        <p className="organization__container--info">Phone Number</p>
+                        <p className="organization__container--info">Description</p>
+                    </div>
                 </div>
+
+
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
                         <label className="org__form--label" htmlFor="name">Organization Name</label>

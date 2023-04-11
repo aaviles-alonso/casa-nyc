@@ -76,9 +76,30 @@ export default function Education() {
                 <div className="hero">
                     <img src={cover} alt="education hero" className="hero__image" />
                 </div>
+                <div className="health__about">
+                    <p className="organization__about--text">
+                        Learning and mastering the English language can open multiple doors for individuals
+                        residing in the United States. Not only does it allow one to communicate with the community,
+                        but it also expands the horizons when it comes to finding career opportunities, education, and hobbies.
+                    </p>
+                </div>
+
                 <div className="education__search">
                     <Search />
                 </div>
+
+                <div className="organization__container">
+                    <div class="organization__container--heading">
+                        <h3>Education Program</h3>
+                        <p className="organization__container--info">Name</p>
+                        <p className="organization__container--info">Address</p>
+                        <p className="organization__container--info">Phone Number</p>
+                        <p className="organization__container--info">Description</p>
+                        <p className="organization__container--info">Link</p>
+
+                    </div>
+                </div>
+
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
                         <label className="org__form--label" htmlFor="name">Program Name</label>
