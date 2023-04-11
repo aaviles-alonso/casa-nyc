@@ -10,7 +10,7 @@ module.exports = {
     user: "root",
     // CHECK ENV EXAMPLE
     password: process.env.DB_LOCAL_PASSWORD,
-    database: "casa-nyc",
+    database: "casa_library",
     charset: "utf8",
   },
 };

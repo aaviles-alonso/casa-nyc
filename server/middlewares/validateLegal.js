@@ -18,7 +18,7 @@ const validateLegal = (req, res, next) => {
 
     //check for number format
     if (
-        !req.body.contact_phone.length == 14
+        !req.body.phone.length == 14
 
     ) {
         return res
@@ -29,17 +29,17 @@ const validateLegal = (req, res, next) => {
 };
 
 
-knex("healthcare")
-    .select("id")
-    .then((data) => {
-        const dataArr = data.map((item) => item.id);
-        // check if id is valid
-        if (!dataArr.includes(req.body.id)) {
-            return res.status(400).send("Legal service provider does not exist");
-        } else {
-            next();
-        }
+// knex("healthcare")
+//     .select("id")
+//     .then((data) => {
+//         const dataArr = data.map((item) => item.id);
+//         // check if id is valid
+//         if (!dataArr.includes(req.body.id)) {
+//             return res.status(400).send("Legal service provider does not exist");
+//         } else {
+//             next();
+//         }
 
-    });
+//     });
 
 module.exports = validateLegal;

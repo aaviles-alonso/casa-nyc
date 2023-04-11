@@ -4,8 +4,8 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex('oranization').del()
-  await knex('oranization').insert([
+  await knex('organizations').del()
+  await knex('organizations').insert([
     {
       id: '56983724',
       name: '100 Hispanic Women National, Inc.',
@@ -267,7 +267,7 @@ exports.seed = async function (knex) {
       link: "http://www.qdep.org/",
     },
     {
-      d: '91628437',
+      id: '91628437',
       name: " Restaurant Opportunities Centers United",
       languages: "Arabic, English, French, Spanish, and others",
       address: "275 Seventh Ave. Suite 1703, New York, NY 10001",

@@ -42,7 +42,7 @@ exports.getSingle = (req, res) => {
         );
 };
 
-exports.getAllFromGivenOrganization = (req, res) => {
+exports.getAllFromGivenLegal = (req, res) => {
     knex("legal")
         .select("id")
         .then((data) => {
@@ -67,7 +67,7 @@ exports.post = (req, res) => {
     const newLegal = { ...req.body, id: randomUUID() };
 
     knex("legal")
-        .insert(newWarehouse)
+        .insert(newLegal)
         .then((data) => {
             //mysql does not send res back about post status
             res.status(201).json(newOrganization);

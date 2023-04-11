@@ -2,28 +2,35 @@ const knex = require("knex")(require("../knexfile"));
 const { randomUUID } = require("crypto");
 
 exports.getAll = (req, res) => {
-    knex("healthcare")
+    knex("education")
         .select(
-            "borough",
+            "id",
             "name",
             "address",
             "phone",
             "zipcode",
+            "description",
+            "class_type",
+            "link",
         )
         .then((data) => {
             res.status(200).json(data);
         })
-        .catch((err) => res.status(400).send(`Error retreiving Healthcare Office ${err}`)
+        .catch((err) => res.status(400).send(`Error retreiving legal service provider ${err}`)
         );
 };
+
 exports.getSingle = (req, res) => {
-    knex("healthcare")
+    knex("education")
         .select(
-            "borough",
+            "id",
             "name",
             "address",
             "phone",
             "zipcode",
+            "description",
+            "class_type",
+            "link",
         )
         .where({ id: req.params.id })
         .then((data) => {
@@ -35,18 +42,18 @@ exports.getSingle = (req, res) => {
             res.status(200).json(data[0]);
         })
         .catch((err) =>
-            res.status(400).send(`Error retrieving Healthcare Office ${req.params.id} ${err}`)
+            res.status(400).send(`Error retrieving education resource ${req.params.id} ${err}`)
         );
 };
 
-exports.getAllFromGivenHealthcare = (req, res) => {
-    knex("healthcare")
+exports.getAllFromGivenEducation = (req, res) => {
+    knex("education")
         .select("id")
         .then((data) => {
             const dataArr = data.map((item) => item.id);
             //check for if warehouse id is valid
             if (!dataArr.includes(req.params.id)) {
-                return res.status(400).send("Helathcare office does not exist");
+                return res.status(400).send("Education resource does not exist");
             } else {
                 res.status(200).json(data);
             }
@@ -55,26 +62,26 @@ exports.getAllFromGivenHealthcare = (req, res) => {
             res
                 .status(400)
                 .send(
-                    `Error retrieving information for Healthcare Office ${req.params.id} ${err}`
+                    `Error retrieving information for Education resource ${req.params.id} ${err}`
                 )
         );
 };
 
 exports.post = (req, res) => {
-    const newHealthcare = { ...req.body, id: randomUUID() };
+    const newEducation = { ...req.body, id: randomUUID() };
 
-    knex("healthcare")
-        .insert(newHealthcare)
+    knex("education")
+        .insert(newEducation)
         .then((data) => {
             //mysql does not send res back about post status
-            res.status(201).json(newHealthcare);
+            res.status(201).json(newEducation);
         })
-        .catch((err) => res.status(400).send(`Error creating Healthcare Office: ${err}`));
+        .catch((err) => res.status(400).send(`Error creating Organization: ${err}`));
 };
 
 exports.put = (req, res) => {
     //posting to db
-    knex("healthcare")
+    knex("education")
         .where({ id: req.params.id })
         .update(req.body)
         .then((data) => {
@@ -82,33 +89,33 @@ exports.put = (req, res) => {
             if (data == 0) {
                 return res
                     .status(404)
-                    .send(`Healthcare with id: ${req.params.id} is not found`);
+                    .send(`Education resource with id: ${req.params.id} is not found`);
             }
             //new query to find and return obj w id
-            knex("healthcare")
+            knex("education")
                 .where({ id: req.params.id })
                 .then((data) => {
                     res.status(200).json(data[0]);
                 });
         })
         .catch((err) => {
-            res.status(400).send(`Error updating Healthcare Office ${req.params.id} ${err}`);
+            res.status(400).send(`Error updating Education resource ${req.params.id} ${err}`);
         });
 };
 
 exports.del = (req, res) => {
-    knex("healthcare")
+    knex("education")
         .where({ id: req.params.id })
         .del()
         .then((data) => {
             if (data == 0) {
                 return res
                     .status(404)
-                    .send(`Healthcare Office with id: ${req.params.id} is not found`);
+                    .send(`Education resource with id: ${req.params.id} is not found`);
             }
-            res.status(204).send(`Healthcare Office with id: ${req.params.id} is deleted`);
+            res.status(204).send(`Education resource with id: ${req.params.id} is deleted`);
         })
         .catch((err) =>
-            res.status(400).send(`Error deleting Healthcare Office ${req.params.id} ${err}`)
+            res.status(400).send(`Error deleting Education resource ${req.params.id} ${err}`)
         );
 };

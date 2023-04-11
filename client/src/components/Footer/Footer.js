@@ -44,7 +44,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-                <p class="footer__copyright">Copyright CASA NYC © 2023 All Rights Reserved</p>
+                <p className="footer__copyright">Copyright CASA NYC © 2023 All Rights Reserved</p>
 
             </footer>
         </>
