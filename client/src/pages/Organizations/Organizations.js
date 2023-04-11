@@ -7,11 +7,11 @@ import "../../styles/global.scss";
 import cover from "../../assets/images/organization-cover.jpeg"
 // components
 import Search from "../../components/Search/Search";
+import ListItem from "../../components/ListItem/ListItem";
 
 
-export default function Organizations() {
+export default function Organizations({ organizations }) {
 
-    const [organization, setOrganization] = useState([]);
     const [addOrganization, setAddOrganization] = useState({
         name: '',
         address: '',
@@ -30,21 +30,24 @@ export default function Organizations() {
         // console.log(value)
     }
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:8080/api/organizations")
-            .then((res) => {
-                setOrganization(res.data);
-            })
-            .catch((err) => console.log(err));
-    }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get("http://localhost:8080/api/organizations")
+    //         .then((res) => {
+    //             Organizations(res.data);
+    //         })
+    //         .catch((err) => console.log(err));
+    // }, []);
 
     // save button func
     const addForm = (e) => {
         e.preventDefault();
         if (validForm() === true) {
-            axios.post(`http://localhost:8080/api/organizations/`, addOrganization)
-                .then(res => console.log(res.data))
+            axios.post(`http://localhost:8080/api/organizations/`, setAddOrganization)
+                .then(res => {
+                    Organizations(res.data)
+                    console.log(res.data)
+                })
                 .catch(err => console.log(err.response))
 
         } else {
@@ -53,14 +56,6 @@ export default function Organizations() {
     }
 
     const [del, setDel] = useState(false);
-
-    // const navigate = useNavigate();
-
-    // const navigateHandler = () => {
-    //     navigate(`organization/add`);
-    // };
-
-
 
     // form validation before submitting
     const validForm = () => {
@@ -99,18 +94,7 @@ export default function Organizations() {
                     <Search />
                 </div>
 
-                <div className="organization__container">
-                    <div class="organization__container--heading">
-                        <h3>Organization Name</h3>
-                        <p className="organization__container--info">Link</p>
-                        <p className="organization__container--info">Languages</p>
-                        <p className="organization__container--info">Address </p>
-                        <p className="organization__container--info">Phone Number</p>
-                        <p className="organization__container--info">Description</p>
-                    </div>
-                </div>
-
-
+                <ListItem />
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
                         <label className="org__form--label" htmlFor="name">Organization Name</label>

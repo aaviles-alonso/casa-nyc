@@ -1,0 +1,29 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.organization {
+    &__container {
+        @include tablet {
+            border-bottom: 2px solid #E1E1E1;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            margin-left: 25px;
+            width: 90%;
+        }
+    }
+
+    &__container--heading {
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 80%;
+            margin-left: 40px;
+        }
+    }
+
+    &__container--info {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+}
