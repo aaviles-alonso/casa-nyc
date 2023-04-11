@@ -8,13 +8,19 @@ import cover from "../../assets/images/organization-cover.jpeg"
 // components
 import Search from "../../components/Search/Search";
 import ListItem from "../../components/ListItem/ListItem";
+import Filter from "../../components/Filter/Filter";
 
 
 export default function Organizations({ organizations }) {
 
+    const [language, setLanguage] = useState('')
+    const [organizationList, setOrganizationList] = useState([]);
+
+
     const [addOrganization, setAddOrganization] = useState({
         name: '',
         address: '',
+        zipcode: '',
         phone: '',
         description: '',
         languages: '',
@@ -30,23 +36,15 @@ export default function Organizations({ organizations }) {
         // console.log(value)
     }
 
-    // useEffect(() => {
-    //     axios
-    //         .get("http://localhost:8080/api/organizations")
-    //         .then((res) => {
-    //             Organizations(res.data);
-    //         })
-    //         .catch((err) => console.log(err));
-    // }, []);
 
-    // save button func
     const addForm = (e) => {
+        console.log(e.target.reset())
         e.preventDefault();
         if (validForm() === true) {
-            axios.post(`http://localhost:8080/api/organizations/`, setAddOrganization)
+            axios.post(`http://localhost:8080/api/organizations/`, addOrganization)
                 .then(res => {
-                    Organizations(res.data)
-                    console.log(res.data)
+                    setOrganizationList([...organizationList, res.data])
+                    alert("Your organization has been uploaded successfully!");
                 })
                 .catch(err => console.log(err.response))
 
@@ -61,6 +59,7 @@ export default function Organizations({ organizations }) {
     const validForm = () => {
         if (!addOrganization.name ||
             !addOrganization.address ||
+            !addOrganization.zipcode ||
             !addOrganization.phone ||
             !addOrganization.description ||
             !addOrganization.link
@@ -71,7 +70,7 @@ export default function Organizations({ organizations }) {
     }
     // form require field requirements
     const fieldInvalid = (value) => {
-        return value ? false : true
+        return value ? true : false
     }
 
 
@@ -92,9 +91,10 @@ export default function Organizations({ organizations }) {
                 </div>
                 <div className="organization__search">
                     <Search />
+                    <Filter setLanguage={setLanguage} />
                 </div>
 
-                <ListItem />
+                <ListItem setOrganizationList={setOrganizationList} organizationList={organizationList} language={language} />
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
                         <label className="org__form--label" htmlFor="name">Organization Name</label>
@@ -117,7 +117,16 @@ export default function Organizations({ organizations }) {
                             value={addOrganization.address}
                             onChange={onChangeAddOrg}
                         />
-                        <span className={`${fieldInvalid(addOrganization.address) ? 'requiredfield' : ''}  notshown`}>This field is required</span>
+                        <label className="org__form--label" htmlFor="zipcode">Zip Code</label>
+                        <input
+                            className="org__form--input"
+                            name="zipcode"
+                            type='text'
+                            placeholder="Zip Code"
+                            value={addOrganization.zipcode}
+                            onChange={onChangeAddOrg}
+                        />
+                        <span className={`${fieldInvalid(addOrganization.zipcode) ? 'requiredfield' : ''} notshown`}>This field is required</span>
 
                         <label className="org__form--label" htmlFor="phone">Phone Number</label>
                         <input
