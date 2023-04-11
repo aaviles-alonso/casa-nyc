@@ -9,7 +9,7 @@
     box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
 
 
-    &__nav--bar {
+    &__navbar {
         @include tablet {
             display: flex;
             justify-content: space-between;
@@ -18,8 +18,9 @@
         }
     }
 
-    &__nav--menu {
-        display: none;
+    &__nav-menu {
+        display: flex;
+        justify-content: space-around;
 
         @include tablet {
             display: flex;
@@ -28,9 +29,13 @@
         }
     }
 
+    &__nav--item {
+        margin: 2.5rem 0;
+    }
 
     &__nav--link {
         margin: 2.5rem 0;
+        color: $Casa-Blue;
 
         @include tablet {
             font-size: 1.2rem;
@@ -46,7 +51,6 @@
             &-active {
                 text-decoration: underline;
                 font-weight: bold;
-
             }
         }
 
@@ -58,6 +62,7 @@
     &__logo {
         width: 45%;
         padding-top: 15px;
+        margin-bottom: 25px;
         margin-left: 100px;
 
         @include tablet {

@@ -5,7 +5,8 @@
 exports.up = function (knex) {
 
     return knex.schema.createTable('healthcare', (table) => {
-        table.uuid('id').primary();
+        table.increments("id").primary().unsigned();
+        table.string('borough').notNullable();
         table.string('name').notNullable();
         table.string('address').notNullable();
         table.string('phone').notNullable();

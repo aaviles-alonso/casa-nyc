@@ -1,10 +1,12 @@
 import './App.scss';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./styles/global.scss";
+
 // import other pages
 import Home from "./pages/Home/Home";
-import NotFound from "./pages/NotFound/NotFound";
 import About from "./pages/About/About";
+import NotFound from "./pages/NotFound/NotFound";
 // import resource pages
 import Resources from "./pages/Resources/Resources";
 import Healthcare from "./pages/Healthcare/Healthcare";
@@ -14,10 +16,10 @@ import Education from "./pages/Education/Education";
 import Organizations from "./pages/Organizations/Organizations";
 // import Header and Footer
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
-
   return (
     <BrowserRouter>
       <Header />
@@ -31,6 +33,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

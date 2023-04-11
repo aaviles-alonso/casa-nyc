@@ -1,0 +1,30 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.search {
+    &__text {
+        padding: 10px;
+        padding-left: 1.6rem;
+        border-radius: 5px;
+        width: 50%;
+        height: 1.5rem;
+        margin-left: 50px;
+        margin-bottom: 1.6rem;
+        border: 1px solid gray;
+        border-radius: 20px;
+        background-image: url(../../assets/icons/search-24px.svg);
+        background-repeat: no-repeat;
+        background-position: 95% 50%;
+
+        @include tablet {
+            width: 24vw;
+            margin-right: 1.6rem;
+            margin-bottom: 0;
+        }
+
+        @include desktop {
+            width: 21vw;
+        }
+
+    }
+}

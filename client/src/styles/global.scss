@@ -1,4 +1,5 @@
 @use "./partials/variables.scss" as *;
+@use "./partials/mixins.scss" as *;
 
 @mixin tablet {
     @media(min-width:$tablet) {
@@ -29,4 +30,36 @@ html {
 
 a {
     text-decoration: none;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: $Casa-Blue;
+
+    @include tablet {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    @include desktop {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: $Casa-Blue;
+}
+
+textarea {
+    font-family: sans-serif;
+    font-weight: 400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }

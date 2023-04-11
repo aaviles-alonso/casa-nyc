@@ -1,0 +1,118 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.footer {
+    background-color: $Casa-Blue;
+
+    &__main {
+        @include desktop {
+            padding-top: 20px;
+        }
+    }
+
+    &__title {
+        color: #fff;
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 32px;
+        margin-left: 40px;
+        padding-top: 20px;
+
+        @include tablet {
+            padding-bottom: 15px;
+        }
+
+        @include desktop {
+            font-size: 2.6rem;
+            margin-left: 100px;
+        }
+
+    }
+
+    &__social {
+        padding-left: 20px;
+
+        @include tablet {
+            float: right;
+            padding-right: 40px;
+        }
+
+        @include desktop {
+            padding-right: 140px;
+        }
+    }
+
+    &__social--link {
+        padding-left: 20px;
+        gap: 40px;
+
+        @include tablet {
+            padding-top: 30px;
+            gap: 0%;
+        }
+
+        @include desktop {
+            padding-left: 30px;
+            width: 20%;
+        }
+    }
+
+    &__contact {
+        display: flex;
+    }
+
+    &__contact--list {
+        @include desktop {
+            padding-left: 100px;
+        }
+    }
+
+    &__contact--icon {
+        width: 6%;
+        height: 6%;
+        float: left;
+        padding-left: 20px;
+
+        @include desktop {
+            width: 10%;
+            height: 10%;
+        }
+    }
+
+    &__contact--text {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-left: 30px;
+        padding-top: 10px;
+
+        @include tablet {
+            margin-left: 40px;
+            padding-bottom: 15px;
+        }
+
+        @include desktop {
+            font-size: 1.8rem;
+            padding-bottom: 40px;
+        }
+    }
+
+    &__copyright {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 32px;
+        margin-left: 20px;
+        padding-top: 20px;
+
+        @include tablet {
+            padding-bottom: 20px;
+        }
+
+        @include desktop {
+            font-size: 1.8rem;
+            margin-left: 100px;
+        }
+
+    }
+}
