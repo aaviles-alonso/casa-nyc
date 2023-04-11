@@ -13,13 +13,12 @@
 
         @include desktop {
             height: 50vh;
+            margin-bottom: 20px;
         }
     }
 }
 
 .organization {
-    &__about {}
-
     &__about--text {
         font-weight: 300;
         font-size: 1.8rem;
@@ -27,5 +26,113 @@
         padding-left: 40px;
         margin-top: 20px;
         text-align: center;
+    }
+}
+
+.requiredfield {
+    display: block;
+    color: red;
+    font-weight: 500;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+}
+
+.notshown {
+    display: none;
+}
+
+.org {
+    &__form {
+        border: 1px solid $Casa-Blue;
+        box-shadow: 0 2px 10px 0 #13182c30;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        width: 90%;
+        margin-left: 20px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        @include tablet {
+            width: 60%;
+            margin-left: 130px;
+        }
+
+        @include desktop {
+            width: 50%;
+            margin-left: 260px;
+        }
+    }
+
+    &__form--section {
+        display: flex;
+        flex-direction: column;
+
+        @include desktop {
+            margin-right: 20px;
+        }
+    }
+
+    &__form--label {
+        font-size: 1.3rem;
+        margin-left: 10px;
+        margin-bottom: 3px;
+
+        @include tablet {
+            font-size: 1.7rem;
+            margin-bottom: 8px;
+            margin-left: 16px;
+        }
+
+        @include desktop {
+            margin-left: 34px;
+        }
+    }
+
+    &__form--input {
+        width: 90%;
+        margin-left: 12px;
+        margin-bottom: 5px;
+        border-radius: 8px;
+        padding: 5px;
+        border: 1px solid $Casa-Blue;
+
+        @include tablet {
+            width: 85%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        @include desktop {
+            margin-left: 34px;
+            padding: 20px;
+            font-size: 1.8rem;
+        }
+    }
+
+    &__add--btn {
+        width: 50%;
+        padding: 7px;
+        margin-left: 70px;
+        border-radius: 8px;
+        border-style: none;
+        background-color: $Casa-Blue;
+        box-sizing: border-box;
+        position: relative;
+        text-align: center;
+        transition: color 100ms;
+        color: white;
+        margin-top: 10px;
+
+        &:hover {
+            opacity: 70%;
+            transition: 0.2s;
+        }
+
+        @include desktop {
+            padding: 15px;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            margin-left: 155px;
+        }
     }
 }
