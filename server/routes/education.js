@@ -4,12 +4,12 @@ const router = express.Router();
 const validateEducation = require("../middlewares/validateEducation");
 const educationController = require("../controllers/educationController");
 
-router.get("/resources/education", educationController.getAll);
+router.get("/", educationController.getAll);
 
-router.put("/resources/education", validateEducation, educationController.put);
+router.put("/", validateEducation, educationController.put);
 
-router.post("/resources/education", validateEducation, educationController.post);
+router.post("/", validateEducation, educationController.post);
 
-router.delete("/resources/education", educationController.del)
+router.delete("/", educationController.del)
 
 module.exports = router;

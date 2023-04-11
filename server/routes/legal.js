@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const validateLegal = require("../middlewares/validateLegal");
-const legalController = require("../controllers/legalController");
+const validateLegal = require("../middlewares/validateEducation");
+const legalController = require("../controllers/educationController");
 
-router.get("/resources/legal", legalController.getAll);
+router.get("/", legalController.getAll);
 
-router.post("/resources/legal", validateLegal, legalController.post);
+router.post("/", validateLegal, legalController.post);
 
-router.put("/resources/legal", validateLegal, legalController.put);
+router.put("/", validateLegal, legalController.put);
 
-router.delete("/resources/legal", legalController.del);
+router.delete("/", legalController.del);
 
 module.exports = router;
