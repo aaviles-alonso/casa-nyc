@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // components
 import Search from "../../components/Search/Search";
+import Filter from "../../components/Filter/Filter";
+import EducationList from "../../components/EducationList/EducationList";
 // photos
 import cover from "../../assets/images/education-cover.jpeg";
 // stylesheet
 import "./Education.scss";
 
-export default function Education() {
+export default function Education(education) {
 
-    const [education, setEducation] = useState([]);
     const [addEducation, setAddEducation] = useState({
         name: '',
         address: '',
@@ -28,21 +29,16 @@ export default function Education() {
         console.log(value)
     }
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:8080/api/education")
-            .then((res) => {
-                setEducation(res.data);
-            })
-            .catch((err) => console.log(err));
-    }, []);
 
     // save button func
     const addForm = (e) => {
         e.preventDefault();
         if (validForm() === true) {
-            axios.post(`http://localhost:8080/api/education`, addEducation)
-                .then(res => console.log(res.data))
+            axios.post(`http://localhost:8080/api/education`, setAddEducation)
+                .then(res => {
+                    Education(res.data)
+                    console.log(res.data)
+                })
                 .catch(err => console.log(err.response))
 
         } else {
@@ -86,19 +82,10 @@ export default function Education() {
 
                 <div className="education__search">
                     <Search />
+                    <Filter />
                 </div>
 
-                <div className="organization__container">
-                    <div class="organization__container--heading">
-                        <h3>Education Program</h3>
-                        <p className="organization__container--info">Name</p>
-                        <p className="organization__container--info">Address</p>
-                        <p className="organization__container--info">Phone Number</p>
-                        <p className="organization__container--info">Description</p>
-                        <p className="organization__container--info">Link</p>
-
-                    </div>
-                </div>
+                <EducationList />
 
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">

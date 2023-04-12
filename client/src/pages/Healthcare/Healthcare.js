@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import HealthList from "../../components/HealthList/HealthList";
 // photos
 import hero from "../../assets/images/health-cover.jpeg";
 
@@ -26,14 +26,14 @@ export default function Healthcare() {
         console.log(value)
     }
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:8080/api/healthcare")
-            .then((res) => {
-                setHealthcare(res.data);
-            })
-            .catch((err) => console.log(err));
-    }, []);
+    // useEffect(() => {
+    //     axios
+    //         .get("http://localhost:8080/api/healthcare")
+    //         .then((res) => {
+    //             setHealthcare(res.data);
+    //         })
+    //         .catch((err) => console.log(err));
+    // }, []);
 
     // save button func
     const addForm = (e) => {
@@ -87,15 +87,7 @@ export default function Healthcare() {
                     </p>
                 </div>
 
-                <div className="organization__container">
-                    <div class="organization__container--heading">
-                        <h3>Medical Provider</h3>
-                        <p className="organization__container--info">Name</p>
-                        <p className="organization__container--info">Address</p>
-                        <p className="organization__container--info">Phone Number </p>
-                        <p className="organization__container--info">Borough </p>
-                    </div>
-                </div>
+                <HealthList />
 
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">

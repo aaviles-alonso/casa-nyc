@@ -4,13 +4,17 @@ const router = express.Router();
 const validateOrganization = require("../middlewares/validateOrganizations");
 const organizationController = require("../controllers/organizationController");
 
-router.get("/organizations", organizationController.getAll);
+router.get("/", organizationController.getAll);
 
-router.post("/organizations", validateOrganization, organizationController.post);
+// router.get("/:languages", organizationController.getSingle)
 
-router.put("/organizations", validateOrganization, organizationController.put);
+router.get("/:languages", organizationController.getAllFromGivenOrganization)
 
-router.delete("/organizations", organizationController.del);
+router.post("/", validateOrganization, organizationController.post);
+
+router.put("/", validateOrganization, organizationController.put);
+
+router.delete("/", organizationController.del);
 
 
 
