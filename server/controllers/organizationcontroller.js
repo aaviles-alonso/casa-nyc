@@ -31,27 +31,36 @@ exports.getSingle = (req, res) => {
             "description",
             "link",
         )
-        .where({ id: req.params.id })
+        .where('languages', 'like', '%' + req.params.languages)
         .then((data) => {
             if (!data.length) {
                 return res
                     .status(404)
-                    .send(`Record with id: ${req.params.id} is not found`);
+                    .send(`Record with id: ${req.params.languages} is not found`);
             }
             res.status(200).json(data[0]);
         })
         .catch((err) =>
-            res.status(400).send(`Error retrieving organization ${req.params.id} ${err}`)
+            res.status(400).send(`Error retrieving organization ${req.params.languages} ${err}`)
         );
 };
 
 exports.getAllFromGivenOrganization = (req, res) => {
     knex("organizations")
-        .select("id")
+        .select(
+            "id",
+            "name",
+            "languages",
+            "address",
+            "phone",
+            "zipcode",
+            "description",
+            "link",)
+        .where({ languages: req.params.languages })
         .then((data) => {
-            const dataArr = data.map((item) => item.id);
+            const dataArr = data.map((organizations) => organizations.languages);
             //check for if warehouse id is valid
-            if (!dataArr.includes(req.params.id)) {
+            if (!dataArr.includes(req.params.languages)) {
                 return res.status(400).send("Organization does not exist");
             } else {
                 res.status(200).json(data);
@@ -73,6 +82,7 @@ exports.post = (req, res) => {
         .insert(newOrganization)
         .then((data) => {
             //mysql does not send res back about post status
+            console.log(data)
             res.status(201).json(newOrganization);
         })
         .catch((err) => res.status(400).send(`Error creating Organization: ${err}`));

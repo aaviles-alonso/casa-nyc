@@ -5,10 +5,11 @@ const validateHealthcare = require("../middlewares/validateHealthcare");
 const healthcareController = require("../controllers/healthcareController");
 
 router.get("/", healthcareController.getAll);
+router.get("/:borough", healthcareController.getSingle)
 
-router.post("/resources/healthcare", validateHealthcare, healthcareController.post);
+router.post("/", validateHealthcare, healthcareController.post);
 
-router.put("/resources/healthcare", validateHealthcare, healthcareController.put);
+router.put("/", validateHealthcare, healthcareController.put);
 
 router.delete("/", healthcareController.del);
 

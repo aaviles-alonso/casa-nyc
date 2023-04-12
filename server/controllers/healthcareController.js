@@ -25,27 +25,34 @@ exports.getSingle = (req, res) => {
             "phone",
             "zipcode",
         )
-        .where({ id: req.params.id })
+        .where('borough', 'like', '%' + req.params.borough)
         .then((data) => {
             if (!data.length) {
                 return res
                     .status(404)
-                    .send(`Record with id: ${req.params.id} is not found`);
+                    .send(`Record with id: ${req.params.borough} is not found`);
             }
             res.status(200).json(data[0]);
         })
         .catch((err) =>
-            res.status(400).send(`Error retrieving Healthcare Office ${req.params.id} ${err}`)
+            res.status(400).send(`Error retrieving Healthcare Office ${req.params.borough} ${err}`)
         );
 };
 
 exports.getAllFromGivenHealthcare = (req, res) => {
     knex("healthcare")
-        .select("id")
+        .select("borough",
+            "name",
+            "address",
+            "phone",
+            "zipcode",
+        )
+        .where('borough', 'like', '%' + req.params.borough)
+
         .then((data) => {
-            const dataArr = data.map((item) => item.id);
+            const dataArr = data.map((healthcare) => healthcare.borough);
             //check for if warehouse id is valid
-            if (!dataArr.includes(req.params.id)) {
+            if (!dataArr.includes(req.params.borough)) {
                 return res.status(400).send("Helathcare office does not exist");
             } else {
                 res.status(200).json(data);

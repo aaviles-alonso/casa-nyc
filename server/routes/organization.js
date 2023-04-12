@@ -6,6 +6,10 @@ const organizationController = require("../controllers/organizationController");
 
 router.get("/", organizationController.getAll);
 
+// router.get("/:languages", organizationController.getSingle)
+
+router.get("/:languages", organizationController.getAllFromGivenOrganization)
+
 router.post("/", validateOrganization, organizationController.post);
 
 router.put("/", validateOrganization, organizationController.put);

@@ -3,11 +3,11 @@ const knex = require("knex")(require("../knexfile"));
 const validateEducation = (req, res, next) => {
     //check for empty inputs
     if (
-        !req.body.id ||
+        // !req.body.id ||
         !req.body.name ||
         !req.body.address ||
         !req.body.phone ||
-        !req.body.zipcode ||
+        // !req.body.zipcode ||
         !req.body.description ||
         !req.body.class_type ||
         !req.body.link
