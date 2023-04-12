@@ -6,6 +6,10 @@ const legalController = require("../controllers/educationController");
 
 router.get("/", legalController.getAll);
 
+router.get("/:zipcode", legalController.getSingle)
+
+router.get("zipcode", legalController.getAllFromGivenLegal)
+
 router.post("/", validateLegal, legalController.post);
 
 router.put("/", validateLegal, legalController.put);
