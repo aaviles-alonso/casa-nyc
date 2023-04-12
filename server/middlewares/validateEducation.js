@@ -3,11 +3,9 @@ const knex = require("knex")(require("../knexfile"));
 const validateEducation = (req, res, next) => {
     //check for empty inputs
     if (
-        // !req.body.id ||
         !req.body.name ||
         !req.body.address ||
         !req.body.phone ||
-        // !req.body.zipcode ||
         !req.body.description ||
         !req.body.class_type ||
         !req.body.link
@@ -31,16 +29,5 @@ const validateEducation = (req, res, next) => {
     next();
 };
 
-// knex("education")
-//     .select("id")
-//     .then((data) => {
-//         const dataArr = data.map((item) => item.id);
-//         // check if id is valid
-//         if (!dataArr.includes(req.body.id)) {
-//             return res.status(400).send("Education resource does not exist");
-//         } else {
-//             next();
-//         }
 
-//     });
 module.exports = validateEducation;
