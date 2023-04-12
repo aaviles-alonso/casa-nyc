@@ -13,10 +13,13 @@ import "../../styles/global.scss";
 
 export default function Legal() {
 
-    const [legal, setLegal] = useState([]);
+    const [zipcode, setZipcode] = useState('')
+    const [legalList, setLegalList] = useState([]);
+
     const [addLegal, setAddLegal] = useState({
         name: '',
         address: '',
+        zipcode: '',
         phone: '',
         link: ''
     })
@@ -27,24 +30,20 @@ export default function Legal() {
         setAddLegal(
             preval => ({ ...preval, [name]: value })
         )
-        console.log(value)
+        // console.log(value)
     }
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:8080/api/healthcare")
-            .then((res) => {
-                setLegal(res.data);
-            })
-            .catch((err) => console.log(err));
-    }, []);
 
     // save button func
     const addForm = (e) => {
+        console.log(e.target.reset())
         e.preventDefault();
         if (validForm() === true) {
             axios.post(`http://localhost:8080/api/legal`, addLegal)
-                .then(res => console.log(res.data))
+                .then(res => {
+                    setLegalList([...legalList, res.data])
+                    alert("Your legal service provider has been uploaded successfully!");
+                })
                 .catch(err => console.log(err.response))
 
         } else {
@@ -57,6 +56,7 @@ export default function Legal() {
     const validForm = () => {
         if (!addLegal.name ||
             !addLegal.address ||
+            !addLegal.zipcode ||
             !addLegal.phone ||
             !addLegal.link
         ) {
@@ -68,7 +68,6 @@ export default function Legal() {
     const fieldInvalid = (value) => {
         return value ? false : true
     }
-
 
     return (
 
@@ -119,6 +118,17 @@ export default function Legal() {
                             type='text'
                             placeholder="Address"
                             value={addLegal.address}
+                            onChange={onChangeAddLegal}
+                        />
+                        <span className={`${fieldInvalid(addLegal.address) ? 'requiredfield' : ''}  notshown`}>This field is required</span>
+
+                        <label className="org__form--label" htmlFor="zipcode">Zip Code</label>
+                        <input
+                            className="org__form--input"
+                            name="zipcode"
+                            type='text'
+                            placeholder="Zip Code"
+                            value={addLegal.zipcode}
                             onChange={onChangeAddLegal}
                         />
                         <span className={`${fieldInvalid(addLegal.address) ? 'requiredfield' : ''}  notshown`}>This field is required</span>

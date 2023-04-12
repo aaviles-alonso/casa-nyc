@@ -4,11 +4,9 @@ import axios from "axios";
 // stylesheet
 import "./HealthList.scss";
 
-const HealthList = () => {
+const HealthList = ({ healthcareList, setHealthcareList, borough }) => {
 
     const [healthcare, setHealthcare] = useState([]);
-    // retreive education list
-    const [healthcareList, setHealthcareList] = useState([]);
 
     useEffect(() => {
         axios
@@ -25,16 +23,17 @@ const HealthList = () => {
             <div className="organization__container">
                 <div className="organization__container--heading">
                     <h3>Medical Provider Offices</h3>
-                    {healthcareList.map((healthcare) => {
+                    <h4>{healthcareList.filter(healthcare => healthcare.borough.includes(borough)).length}</h4>
+                    {healthcareList.filter(healthcare => healthcare.borough.includes(borough)).map((healthcare) => {
                         return (
-                            <>
-                                <div className="organization__container--section">
-                                    <p className="organization__container--info-name">{healthcare.name}</p>
-                                    <p className="organization__container--info">{healthcare.address} </p>
-                                    <p className="organization__container--info">T: {healthcare.phone}</p>
-                                    <p className="organization__container--info">{healthcare.borough}</p>
-                                </div>
-                            </>
+
+                            <div className="organization__container--section">
+                                <p className="organization__container--info-name">{healthcare.name}</p>
+                                <p className="organization__container--info">{healthcare.address} </p>
+                                <p className="organization__container--info">T: {healthcare.phone}</p>
+                                <p className="organization__container--info">{healthcare.borough}</p>
+                            </div>
+
                         )
                     })}
 

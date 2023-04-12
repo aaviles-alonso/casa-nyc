@@ -4,8 +4,8 @@ import axios from "axios";
 
 
 const ListItem = ({ organizationList, setOrganizationList, language }) => {
+
     const [organizations, setOrganizations] = useState([])
-    // retrieve organization list
 
     useEffect(() => {
         axios
