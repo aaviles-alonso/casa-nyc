@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import axios from "axios";
 import "./Filter.scss";
 
 const Filter = ({ setOrganizationList, setLanguage }) => {
@@ -12,12 +11,7 @@ const Filter = ({ setOrganizationList, setLanguage }) => {
     const submitLanguage = (e) => {
         e.preventDefault()
         setLanguage(languageRef.current.language.value)
-        // setLanguage(e.target.value)
-        // axios.get(`http://localhost:8080/api/organizations/${language}`)
-        //     .then(res =>
-        //         setOrganizationList(res.data)
-        //     )
-        //     .catch(err => console.log(err))
+
     }
     return (
         <>
@@ -42,7 +36,7 @@ const Filter = ({ setOrganizationList, setLanguage }) => {
                     <option value='Vietnamese'>Polish</option>
 
                 </select>
-                <button
+                <button className="form__filter--button"
                 >Filter</button>
             </form >
         </>

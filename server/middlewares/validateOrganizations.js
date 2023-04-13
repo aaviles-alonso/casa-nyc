@@ -32,17 +32,5 @@ const validateOrganization = (req, res, next) => {
 };
 
 
-// knex("organization")
-//     .select("id")
-//     .then((data) => {
-//         const dataArr = data.map((item) => item.id);
-//         // check if id is valid
-//         if (!dataArr.includes(req.body.id)) {
-//             return res.status(400).send("Organization does not exist");
-//         } else {
-//             next();
-//         }
-
-//     });
 
 module.exports = validateOrganization;

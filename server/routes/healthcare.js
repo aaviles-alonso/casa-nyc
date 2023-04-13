@@ -5,7 +5,8 @@ const validateHealthcare = require("../middlewares/validateHealthcare");
 const healthcareController = require("../controllers/healthcareController");
 
 router.get("/", healthcareController.getAll);
-router.get("/:borough", healthcareController.getSingle)
+
+router.get("/:borough", healthcareController.getAllFromGivenHealthcare)
 
 router.post("/", validateHealthcare, healthcareController.post);
 

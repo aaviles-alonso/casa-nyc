@@ -1,2 +1,22 @@
 @use "../../styles/partials/mixins.scss" as *;
 @use "../../styles/partials/variables.scss" as *;
+
+.form {
+    &__title {
+        font-size: 1.5rem;
+    }
+
+    &__languages {
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    &__filter--button {
+        border-radius: 5px;
+        margin-left: 10px;
+        font-size: 1rem;
+        padding: 5px;
+        background-color: $Casa-Blue;
+        color: white;
+    }
+}

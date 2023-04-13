@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // stylesheet
 import "./Organizations.scss";
-import "../../styles/global.scss";
 // cover
 import cover from "../../assets/images/organization-cover.jpeg"
 // components
@@ -36,7 +35,7 @@ export default function Organizations({ organizations }) {
         // console.log(value)
     }
 
-
+    // save button func
     const addForm = (e) => {
         console.log(e.target.reset())
         e.preventDefault();
@@ -72,8 +71,6 @@ export default function Organizations({ organizations }) {
     const fieldInvalid = (value) => {
         return value ? true : false
     }
-
-
     return (
         <>
             <div className="organization">
@@ -89,12 +86,14 @@ export default function Organizations({ organizations }) {
                         where immigrants can gather this vital information and reach
                         out to the organizations.</p>
                 </div>
+
                 <div className="organization__search">
                     <Search />
                     <Filter setLanguage={setLanguage} />
                 </div>
 
                 <ListItem setOrganizationList={setOrganizationList} organizationList={organizationList} language={language} />
+
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
                         <label className="org__form--label" htmlFor="name">Organization Name</label>

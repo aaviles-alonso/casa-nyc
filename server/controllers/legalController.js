@@ -51,6 +51,7 @@ exports.getAllFromGivenLegal = (req, res) => {
             "phone",
             "zipcode",
             "link",)
+        .where({ zipcode: req.params.zipcode })
         .then((data) => {
             const dataArr = data.map((legal) => legal.zipcode);
             //check for if warehouse id is valid
@@ -76,6 +77,7 @@ exports.post = (req, res) => {
         .insert(newLegal)
         .then((data) => {
             //mysql does not send res back about post status
+            console.log(data)
             res.status(201).json(newLegal);
         })
         .catch((err) => res.status(400).send(`Error creating Organization: ${err}`));

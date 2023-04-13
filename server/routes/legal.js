@@ -1,14 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const validateLegal = require("../middlewares/validateEducation");
-const legalController = require("../controllers/educationController");
+const validateLegal = require("../middlewares/validateLegal");
+const legalController = require("../controllers/legalController");
 
 router.get("/", legalController.getAll);
 
-router.get("/:zipcode", legalController.getSingle)
-
-router.get("zipcode", legalController.getAllFromGivenLegal)
+router.get("/:zipcode", legalController.getAllFromGivenLegal)
 
 router.post("/", validateLegal, legalController.post);
 
