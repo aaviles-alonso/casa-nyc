@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import "./EduFilter.scss";
+import "../Filter/Filter.scss";
+
 
 const EduFilter = ({ setEducationList, setEclass }) => {
 
@@ -31,7 +33,7 @@ const EduFilter = ({ setEducationList, setEclass }) => {
                     <option value='ELA'>ELA</option>
 
                 </select>
-                <button
+                <button className="form__filter--button"
                 >Filter</button>
             </form >
 

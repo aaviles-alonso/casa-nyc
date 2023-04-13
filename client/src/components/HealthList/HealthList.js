@@ -16,12 +16,12 @@ const HealthList = ({ healthcareList, setHealthcareList, borough }) => {
             })
             .catch((err) => console.log(err));
     }, []);
-    console.log(healthcareList)
+    // console.log(healthcareList)
 
     return (
         <>
             <div className="organization__container">
-                <div className="organization__container--heading">
+                <div key={healthcare.id} className="organization__container--heading">
                     <h3>Medical Provider Offices</h3>
                     <h4>{healthcareList.filter(healthcare => healthcare.borough.includes(borough)).length}</h4>
                     {healthcareList.filter(healthcare => healthcare.borough.includes(borough)).map((healthcare) => {

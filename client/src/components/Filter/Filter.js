@@ -36,7 +36,7 @@ const Filter = ({ setOrganizationList, setLanguage }) => {
                     <option value='Vietnamese'>Polish</option>
 
                 </select>
-                <button
+                <button className="form__filter--button"
                 >Filter</button>
             </form >
         </>

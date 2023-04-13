@@ -5,13 +5,16 @@ import axios from "axios";
 import hero from "../../assets/images/legal-cover.jpeg";
 // import components
 import Search from "../../components/Search/Search";
+import LegalFilter from "../../components/LegalFilter/LegalFilter";
+import LegalList from "../../components/LegalList/LegalList";
 // stylesheet
 import "./Legal.scss";
+import "../Organizations/Organizations.scss";
 import "../../styles/global.scss";
 
 
 
-export default function Legal() {
+export default function Legal(legal) {
 
     const [zipcode, setZipcode] = useState('')
     const [legalList, setLegalList] = useState([]);
@@ -39,7 +42,7 @@ export default function Legal() {
         console.log(e.target.reset())
         e.preventDefault();
         if (validForm() === true) {
-            axios.post(`http://localhost:8080/api/legal`, addLegal)
+            axios.post(`http://localhost:8080/api/legal/`, addLegal)
                 .then(res => {
                     setLegalList([...legalList, res.data])
                     alert("Your legal service provider has been uploaded successfully!");
@@ -66,7 +69,7 @@ export default function Legal() {
     }
     // form require field requirements
     const fieldInvalid = (value) => {
-        return value ? false : true
+        return value ? true : false
     }
 
     return (
@@ -86,7 +89,12 @@ export default function Legal() {
                         in New York State. Please contact them and ask about your personal inquiry.</p>
                 </div>
 
-                <Search />
+                <div className="organization__search">
+                    <Search />
+                    <LegalFilter />
+                </div>
+
+                <LegalList setLegalList={setLegalList} legalList={legalList} zipcode={zipcode} />
 
                 <div className="organization__container">
                     <div class="organization__container--heading">

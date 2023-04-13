@@ -14,12 +14,12 @@ const EducationList = ({ educationList, setEducationList, eclass }) => {
             })
             .catch((err) => console.log(err));
     }, []);
-    console.log(educationList)
+    // console.log(educationList)
 
     return (
         <>
             <div className="organization__container">
-                <div className="organization__container--heading">
+                <div key={education.id} className="organization__container--heading">
                     <h3>All Education Programs</h3>
                     <h4>{educationList.filter(education => education.class_type.includes(eclass)).length}</h4>
                     {educationList.filter(education => education.class_type.includes(eclass)).map((education) => {

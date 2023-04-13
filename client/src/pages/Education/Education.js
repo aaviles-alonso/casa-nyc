@@ -8,6 +8,8 @@ import EducationList from "../../components/EducationList/EducationList";
 import cover from "../../assets/images/education-cover.jpeg";
 // stylesheet
 import "./Education.scss";
+import "../Organizations/Organizations.scss";
+
 
 export default function Education(education) {
 

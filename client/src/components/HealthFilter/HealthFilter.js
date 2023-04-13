@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import "./HealthFilter.scss";
+import "../Filter/Filter.scss";
 
 const HealthFilter = ({ setHealthcareList, setBorough }) => {
     // borough filter
@@ -8,9 +9,10 @@ const HealthFilter = ({ setHealthcareList, setBorough }) => {
     const boroughHandler = (e) => {
         setBorough(e.target.value)
     }
+
     const submitBorough = (e) => {
         e.preventDefault()
-        setBorough(boroughRef.current.language.value)
+        setBorough(boroughRef.current.borough.value)
     }
     return (
         <>
@@ -22,7 +24,7 @@ const HealthFilter = ({ setHealthcareList, setBorough }) => {
                     id="borough"
                     className="form__languages"
                 >
-                    <option value=''>Select Languages</option>
+                    <option value=''>Select Borough</option>
                     <option value='Manhattan'>Manhattan</option>
                     <option value='Queens'>Queens</option>
                     <option value='Brooklyn'>Brooklyn</option>
@@ -30,7 +32,7 @@ const HealthFilter = ({ setHealthcareList, setBorough }) => {
                     <option value='Staten Island'>Staten Island</option>
 
                 </select>
-                <button
+                <button className="form__filter--button"
                 >Filter</button>
             </form >
         </>

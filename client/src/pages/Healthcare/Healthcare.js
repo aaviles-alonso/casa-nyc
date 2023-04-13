@@ -3,11 +3,13 @@ import axios from "axios";
 // import components
 import Search from "../../components/Search/Search";
 import HealthList from "../../components/HealthList/HealthList";
+import HealthFilter from "../../components/HealthFilter/HealthFilter";
 // photos
 import hero from "../../assets/images/health-cover.jpeg";
 // stylesheet
 import "./Healthcare.scss";
-import HealthFilter from "../../components/HealthFilter/HealthFilter";
+import "../Organizations/Organizations.scss";
+
 
 export default function Healthcare(healthcare) {
 
@@ -36,7 +38,7 @@ export default function Healthcare(healthcare) {
         console.log(e.target.reset())
         e.preventDefault();
         if (validForm() === true) {
-            axios.post(`http://localhost:8080/api/healthcare`, addHealthcare)
+            axios.post(`http://localhost:8080/api/healthcare/`, addHealthcare)
                 .then(res => {
                     setHealthcareList([...healthcareList, res.data])
                     alert("Your medical service provider has been uploaded successfully!");
@@ -63,7 +65,7 @@ export default function Healthcare(healthcare) {
     }
     // form require field requirements
     const fieldInvalid = (value) => {
-        return value ? false : true
+        return value ? true : false
     }
     return (
         <>
@@ -87,8 +89,12 @@ export default function Healthcare(healthcare) {
                         of this fact sheet for locations.
                     </p>
                 </div>
-                <Search />
-                <HealthFilter />
+
+                <div className="organization__search">
+                    <Search />
+                    <HealthFilter setBorough={setBorough} />
+                </div>
+
                 <HealthList setHealthcareList={setHealthcareList} healthcareList={healthcareList} borough={borough} />
 
                 <form className="org__form" onSubmit={addForm}>
