@@ -2,19 +2,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 // stylesheet
 import "./Organizations.scss";
-import "../../styles/global.scss";
 // cover
 import cover from "../../assets/images/organization-cover.jpeg"
 // components
 import Search from "../../components/Search/Search";
+import ListItem from "../../components/ListItem/ListItem";
+import Filter from "../../components/Filter/Filter";
 
 
-export default function Organizations() {
+export default function Organizations({ organizations }) {
 
-    const [organization, setOrganization] = useState([]);
+    const [language, setLanguage] = useState('')
+    const [organizationList, setOrganizationList] = useState([]);
+
+
     const [addOrganization, setAddOrganization] = useState({
         name: '',
         address: '',
+        zipcode: '',
         phone: '',
         description: '',
         languages: '',
@@ -30,21 +35,16 @@ export default function Organizations() {
         // console.log(value)
     }
 
-    useEffect(() => {
-        axios
-            .get("http://localhost:8080/api/organizations")
-            .then((res) => {
-                setOrganization(res.data);
-            })
-            .catch((err) => console.log(err));
-    }, []);
-
     // save button func
     const addForm = (e) => {
+        console.log(e.target.reset())
         e.preventDefault();
         if (validForm() === true) {
             axios.post(`http://localhost:8080/api/organizations/`, addOrganization)
-                .then(res => console.log(res.data))
+                .then(res => {
+                    setOrganizationList([...organizationList, res.data])
+                    alert("Your organization has been uploaded successfully!");
+                })
                 .catch(err => console.log(err.response))
 
         } else {
@@ -54,18 +54,11 @@ export default function Organizations() {
 
     const [del, setDel] = useState(false);
 
-    // const navigate = useNavigate();
-
-    // const navigateHandler = () => {
-    //     navigate(`organization/add`);
-    // };
-
-
-
     // form validation before submitting
     const validForm = () => {
         if (!addOrganization.name ||
             !addOrganization.address ||
+            !addOrganization.zipcode ||
             !addOrganization.phone ||
             !addOrganization.description ||
             !addOrganization.link
@@ -76,10 +69,8 @@ export default function Organizations() {
     }
     // form require field requirements
     const fieldInvalid = (value) => {
-        return value ? false : true
+        return value ? true : false
     }
-
-
     return (
         <>
             <div className="organization">
@@ -95,21 +86,13 @@ export default function Organizations() {
                         where immigrants can gather this vital information and reach
                         out to the organizations.</p>
                 </div>
+
                 <div className="organization__search">
                     <Search />
+                    <Filter setLanguage={setLanguage} />
                 </div>
 
-                <div className="organization__container">
-                    <div class="organization__container--heading">
-                        <h3>Organization Name</h3>
-                        <p className="organization__container--info">Link</p>
-                        <p className="organization__container--info">Languages</p>
-                        <p className="organization__container--info">Address </p>
-                        <p className="organization__container--info">Phone Number</p>
-                        <p className="organization__container--info">Description</p>
-                    </div>
-                </div>
-
+                <ListItem setOrganizationList={setOrganizationList} organizationList={organizationList} language={language} />
 
                 <form className="org__form" onSubmit={addForm}>
                     <div className="org__form--section">
@@ -133,7 +116,16 @@ export default function Organizations() {
                             value={addOrganization.address}
                             onChange={onChangeAddOrg}
                         />
-                        <span className={`${fieldInvalid(addOrganization.address) ? 'requiredfield' : ''}  notshown`}>This field is required</span>
+                        <label className="org__form--label" htmlFor="zipcode">Zip Code</label>
+                        <input
+                            className="org__form--input"
+                            name="zipcode"
+                            type='text'
+                            placeholder="Zip Code"
+                            value={addOrganization.zipcode}
+                            onChange={onChangeAddOrg}
+                        />
+                        <span className={`${fieldInvalid(addOrganization.zipcode) ? 'requiredfield' : ''} notshown`}>This field is required</span>
 
                         <label className="org__form--label" htmlFor="phone">Phone Number</label>
                         <input

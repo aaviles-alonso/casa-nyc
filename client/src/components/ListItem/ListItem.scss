@@ -1,0 +1,54 @@
+@use "../../styles/partials/mixins.scss" as *;
+@use "../../styles/partials/variables.scss" as *;
+
+.organization {
+    &__container {
+        @include tablet {
+            border: 2px solid #E1E1E1;
+            margin-top: 30px;
+            margin-bottom: 60px;
+            margin-left: 25px;
+            width: 90%;
+            height: 50vh;
+            overflow-y: scroll;
+        }
+    }
+
+    &__container--heading {
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+            margin-left: 40px;
+        }
+    }
+
+    &__container--section {
+        border-bottom: 2px solid black;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    &__container--info {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    &__container--info-name {
+        font-weight: 600;
+        text-decoration: bold;
+        font-size: 1.2rem;
+    }
+
+    &__container--link {
+        color: $Casa-Blue;
+        text-decoration: underline;
+    }
+}
+
+h3 {
+    font-size: 2rem;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

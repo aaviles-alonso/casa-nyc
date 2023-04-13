@@ -32,27 +32,36 @@ exports.getSingle = (req, res) => {
             "class_type",
             "link",
         )
-        .where({ id: req.params.id })
+        .where('languages', 'like', '%' + req.params.class_type)
         .then((data) => {
             if (!data.length) {
                 return res
                     .status(404)
-                    .send(`Record with id: ${req.params.id} is not found`);
+                    .send(`Record with id: ${req.params.class_type} is not found`);
             }
             res.status(200).json(data[0]);
         })
         .catch((err) =>
-            res.status(400).send(`Error retrieving education resource ${req.params.id} ${err}`)
+            res.status(400).send(`Error retrieving education resource ${req.params.class_type} ${err}`)
         );
 };
 
 exports.getAllFromGivenEducation = (req, res) => {
     knex("education")
-        .select("id")
+        .select("id",
+            "name",
+            "languages",
+            "address",
+            "phone",
+            "zipcode",
+            "description",
+            "link",)
+        .where('class_type', 'like', '%' + req.params.class_type)
+
         .then((data) => {
-            const dataArr = data.map((item) => item.id);
+            const dataArr = data.map((education) => education.class_type);
             //check for if warehouse id is valid
-            if (!dataArr.includes(req.params.id)) {
+            if (!dataArr.includes(req.params.class_type)) {
                 return res.status(400).send("Education resource does not exist");
             } else {
                 res.status(200).json(data);
@@ -62,7 +71,7 @@ exports.getAllFromGivenEducation = (req, res) => {
             res
                 .status(400)
                 .send(
-                    `Error retrieving information for Education resource ${req.params.id} ${err}`
+                    `Error retrieving information for Education resource ${req.params.class_type} ${err}`
                 )
         );
 };

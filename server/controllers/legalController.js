@@ -28,12 +28,12 @@ exports.getSingle = (req, res) => {
             "zipcode",
             "link",
         )
-        .where({ id: req.params.id })
+        .where('zipcode', 'like', '%' + req.params.zipcode)
         .then((data) => {
             if (!data.length) {
                 return res
                     .status(404)
-                    .send(`Record with id: ${req.params.id} is not found`);
+                    .send(`Record with id: ${req.params.zipcode} is not found`);
             }
             res.status(200).json(data[0]);
         })
@@ -44,11 +44,18 @@ exports.getSingle = (req, res) => {
 
 exports.getAllFromGivenLegal = (req, res) => {
     knex("legal")
-        .select("id")
+        .select(
+            "id",
+            "name",
+            "address",
+            "phone",
+            "zipcode",
+            "link",)
+        .where({ zipcode: req.params.zipcode })
         .then((data) => {
-            const dataArr = data.map((item) => item.id);
+            const dataArr = data.map((legal) => legal.zipcode);
             //check for if warehouse id is valid
-            if (!dataArr.includes(req.params.id)) {
+            if (!dataArr.includes(req.params.zipcode)) {
                 return res.status(400).send("Legal service provider does not exist");
             } else {
                 res.status(200).json(data);
@@ -70,7 +77,8 @@ exports.post = (req, res) => {
         .insert(newLegal)
         .then((data) => {
             //mysql does not send res back about post status
-            res.status(201).json(newOrganization);
+            console.log(data)
+            res.status(201).json(newLegal);
         })
         .catch((err) => res.status(400).send(`Error creating Organization: ${err}`));
 };

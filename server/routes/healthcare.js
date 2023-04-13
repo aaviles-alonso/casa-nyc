@@ -4,13 +4,15 @@ const router = express.Router();
 const validateHealthcare = require("../middlewares/validateHealthcare");
 const healthcareController = require("../controllers/healthcareController");
 
-router.get("/resources/healthcare", healthcareController.getAll);
+router.get("/", healthcareController.getAll);
 
-router.post("/resources/healthcare", validateHealthcare, healthcareController.post);
+router.get("/:borough", healthcareController.getAllFromGivenHealthcare)
 
-router.put("/resources/healthcare", validateHealthcare, healthcareController.put);
+router.post("/", validateHealthcare, healthcareController.post);
 
-router.delete("/resources/healthcare", healthcareController.del);
+router.put("/", validateHealthcare, healthcareController.put);
+
+router.delete("/", healthcareController.del);
 
 
 

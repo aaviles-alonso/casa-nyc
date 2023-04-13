@@ -3,11 +3,11 @@ const knex = require("knex")(require("../knexfile"));
 const validateHealthcare = (req, res, next) => {
     //check for empty inputs
     if (
-        !req.body.id ||
+        // !req.body.id ||
         !req.body.name ||
         !req.body.address ||
         !req.body.phone ||
-        !req.body.zipcode
+        !req.body.borough
     ) {
         return res
             .status(400)
@@ -28,18 +28,5 @@ const validateHealthcare = (req, res, next) => {
     next();
 };
 
-
-// knex("healthcare")
-//     .select("id")
-//     .then((data) => {
-//         const dataArr = data.map((item) => item.id);
-//         // check if id is valid
-//         if (!dataArr.includes(req.body.id)) {
-//             return res.status(400).send("Healthcare office does not exist");
-//         } else {
-//             next();
-//         }
-
-//     });
 
 module.exports = validateHealthcare;

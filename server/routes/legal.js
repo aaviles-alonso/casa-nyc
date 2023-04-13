@@ -4,12 +4,14 @@ const router = express.Router();
 const validateLegal = require("../middlewares/validateLegal");
 const legalController = require("../controllers/legalController");
 
-router.get("/resources/legal", legalController.getAll);
+router.get("/", legalController.getAll);
 
-router.post("/resources/legal", validateLegal, legalController.post);
+router.get("/:zipcode", legalController.getAllFromGivenLegal)
 
-router.put("/resources/legal", validateLegal, legalController.put);
+router.post("/", validateLegal, legalController.post);
 
-router.delete("/resources/legal", legalController.del);
+router.put("/", validateLegal, legalController.put);
+
+router.delete("/", legalController.del);
 
 module.exports = router;

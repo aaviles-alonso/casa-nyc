@@ -22,5 +22,5 @@ app.use("/api/education", educationRoutes);
 
 // listening
 app.listen(PORT || 8080, () => {
-    console.log("are YOU listening?");
+    console.log("Listening");
 });

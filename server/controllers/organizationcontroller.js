@@ -2,7 +2,7 @@ const knex = require("knex")(require("../knexfile"));
 const { randomUUID } = require("crypto");
 
 exports.getAll = (req, res) => {
-    knex("organization")
+    knex("organizations")
         .select(
             "id",
             "name",
@@ -20,7 +20,7 @@ exports.getAll = (req, res) => {
         );
 };
 exports.getSingle = (req, res) => {
-    knex("organization")
+    knex("organizations")
         .select(
             "id",
             "name",
@@ -31,27 +31,36 @@ exports.getSingle = (req, res) => {
             "description",
             "link",
         )
-        .where({ id: req.params.id })
+        .where('languages', 'like', '%' + req.params.languages)
         .then((data) => {
             if (!data.length) {
                 return res
                     .status(404)
-                    .send(`Record with id: ${req.params.id} is not found`);
+                    .send(`Record with id: ${req.params.languages} is not found`);
             }
             res.status(200).json(data[0]);
         })
         .catch((err) =>
-            res.status(400).send(`Error retrieving organization ${req.params.id} ${err}`)
+            res.status(400).send(`Error retrieving organization ${req.params.languages} ${err}`)
         );
 };
 
 exports.getAllFromGivenOrganization = (req, res) => {
-    knex("organization")
-        .select("id")
+    knex("organizations")
+        .select(
+            "id",
+            "name",
+            "languages",
+            "address",
+            "phone",
+            "zipcode",
+            "description",
+            "link",)
+        .where({ languages: req.params.languages })
         .then((data) => {
-            const dataArr = data.map((item) => item.id);
+            const dataArr = data.map((organizations) => organizations.languages);
             //check for if warehouse id is valid
-            if (!dataArr.includes(req.params.id)) {
+            if (!dataArr.includes(req.params.languages)) {
                 return res.status(400).send("Organization does not exist");
             } else {
                 res.status(200).json(data);
@@ -69,10 +78,11 @@ exports.getAllFromGivenOrganization = (req, res) => {
 exports.post = (req, res) => {
     const newOrganization = { ...req.body, id: randomUUID() };
 
-    knex("organization")
+    knex("organizations")
         .insert(newOrganization)
         .then((data) => {
             //mysql does not send res back about post status
+            console.log(data)
             res.status(201).json(newOrganization);
         })
         .catch((err) => res.status(400).send(`Error creating Organization: ${err}`));
@@ -80,7 +90,7 @@ exports.post = (req, res) => {
 
 exports.put = (req, res) => {
     //posting to db
-    knex("organization")
+    knex("organizations")
         .where({ id: req.params.id })
         .update(req.body)
         .then((data) => {
@@ -91,7 +101,7 @@ exports.put = (req, res) => {
                     .send(`Organization with id: ${req.params.id} is not found`);
             }
             //new query to find and return obj w id
-            knex("organization")
+            knex("organizations")
                 .where({ id: req.params.id })
                 .then((data) => {
                     res.status(200).json(data[0]);
@@ -103,7 +113,7 @@ exports.put = (req, res) => {
 };
 
 exports.del = (req, res) => {
-    knex("organization")
+    knex("organizations")
         .where({ id: req.params.id })
         .del()
         .then((data) => {
